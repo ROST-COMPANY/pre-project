@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "rostDesignSystem",
+    "slug": "rostDesignSystem",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "rostDesignSystem"
+}
