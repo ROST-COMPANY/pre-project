@@ -7,8 +7,7 @@ export default function ButtonList() {
 		<ButtonListContainer>
 			<Text>Primary</Text>
 			<Button onPress={() => console.log('press Primary!')}>
-				{/* Primary Button */}
-				다음
+				Primary Button
 			</Button>
 			<Text>Secondary(touchEffect: none)</Text>
 			<Button
@@ -29,6 +28,10 @@ export default function ButtonList() {
 			<Text>Ghost</Text>
 			<Button type="ghost" onPress={() => console.log('press Ghost!')}>
 				Primary Button
+			</Button>
+			<Text>disabled</Text>
+			<Button disabled onPress={() => console.log('press Ghost!')}>
+				Disabled Button
 			</Button>
 		</ButtonListContainer>
 	);

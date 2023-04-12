@@ -14,6 +14,7 @@ export type ButtonType =
 interface ButtonProps {
 	children: React.ReactNode;
 	type?: ButtonType;
+	disabled?: boolean;
 	touchEffect?: TouchEffect;
 	width?: string;
 	height?: string;
@@ -23,11 +24,19 @@ interface ButtonProps {
 export default function Button({
 	children,
 	type = 'primary',
+	disabled = false,
 	touchEffect = 'opacity',
 	width = '100%',
 	height = '52px',
 	onPress,
 }: ButtonProps) {
+	if (disabled)
+		return (
+			<BGDisabled width={width} height={height}>
+				<TextDisabled>{children}</TextDisabled>
+			</BGDisabled>
+		);
+
 	const Inner = () => {
 		switch (type) {
 			case 'primary':
@@ -143,6 +152,10 @@ const BGGhost = styled(BGCommon)`
 	background-color: transparent;
 `;
 
+const BGDisabled = styled(BGCommon)`
+	background-color: ${systemColor.disabled};
+`;
+
 const TextCommon = styled.Text`
 	font-family: 'AppleSDGothicNeo-Medium';
 	font-size: ${fontSize.xlarge};
@@ -166,4 +179,8 @@ const TextDanger = styled(TextCommon)`
 
 const TextGhost = styled(TextCommon)`
 	color: ${brandColor.primary};
+`;
+
+const TextDisabled = styled(TextCommon)`
+	color: white;
 `;
