@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { PressHandler } from '../types/reactCommon.type';
+import { PressHandler, TouchEffect } from '../types/reactCommon.type';
 import { brandColor, fontSize, systemColor } from '../styles/theme';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export type ButtonType =
 	| 'primary'
@@ -13,7 +14,7 @@ export type ButtonType =
 interface ButtonProps {
 	children: React.ReactNode;
 	type?: ButtonType;
-	touchEffect?: 'opacity' | 'none';
+	touchEffect?: TouchEffect;
 	width?: string;
 	height?: string;
 	onPress: PressHandler;
@@ -24,14 +25,20 @@ export default function Button({
 	type = 'primary',
 	touchEffect = 'opacity',
 	width = '100%',
-	height = 'auto',
+	height = '52px',
 	onPress,
 }: ButtonProps) {
 	const Inner = () => {
 		switch (type) {
 			case 'primary':
 				return (
-					<BGPrimary width={width} height={height}>
+					<BGPrimary
+						width={width}
+						height={height}
+						colors={['#5257E1', '#764CD2', '#B63AB9']}
+						start={{ x: 0, y: 0 }}
+						end={{ x: 1, y: 0 }}
+					>
 						<TextPrimary>{children}</TextPrimary>
 					</BGPrimary>
 				);
@@ -61,7 +68,13 @@ export default function Button({
 				);
 			default:
 				return (
-					<BGPrimary width={width} height={height}>
+					<BGPrimary
+						width={width}
+						height={height}
+						colors={['#5257E1', '#764CD2', '#B63AB9']}
+						start={{ x: 0, y: 0 }}
+						end={{ x: 1, y: 0 }}
+					>
 						<TextPrimary>{children}</TextPrimary>
 					</BGPrimary>
 				);
@@ -82,7 +95,9 @@ const Opacity = styled.TouchableOpacity`
 	width: 100%;
 `;
 
-const None = styled.TouchableWithoutFeedback``;
+const None = styled.TouchableWithoutFeedback`
+	width: 100%;
+`;
 
 interface BGProps {
 	width: string;
@@ -94,12 +109,21 @@ const BGCommon = styled.View<BGProps>`
 	align-items: center;
 	width: ${({ width }) => width};
 	height: ${({ height }) => height};
-	padding: 12px 20px;
 	border-radius: 8px;
 `;
 
-const BGPrimary = styled(BGCommon)`
-	background-color: ${brandColor.primary};
+interface BGPrimaryProps {
+	width: string;
+	height: string;
+}
+
+const BGPrimary = styled(LinearGradient)<BGPrimaryProps>`
+	justify-content: center;
+	align-items: center;
+	width: ${({ width }) => width};
+	height: ${({ height }) => height};
+	padding: 12px 20px;
+	border-radius: 8px;
 `;
 
 const BGSceondary = styled(BGCommon)`
@@ -120,7 +144,8 @@ const BGGhost = styled(BGCommon)`
 `;
 
 const TextCommon = styled.Text`
-	font-size: ${fontSize.large};
+	font-family: 'AppleSDGothicNeo-Medium';
+	font-size: ${fontSize.xlarge};
 `;
 
 const TextPrimary = styled(TextCommon)`

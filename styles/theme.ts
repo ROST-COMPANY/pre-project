@@ -1,23 +1,24 @@
 import { blue } from './palette';
 
 export const brandColor = {
-	primary: blue[600],
-	secondary: blue[300],
-	tertiary: 'transparent',
+	primary: '#5257E1', // '#5257E1, #764CD2, #B63AB9' 그라데이션,
+	secondary: '#333333',
+	tertiary: '#FFFFFF',
 };
 
 export const systemColor = {
-	success: '#24A148',
-	warning: '#FDD13A',
-	error: '#DA1E28',
-	disabled: '#D1CFC9',
-	overay: 'rgba(12, 12, 12, 0.48)',
+	success: '#28C840',
+	warning: '#FFBB2E',
+	error: '#CC0000',
+	disabled: '#CCCCCC',
+	overay: '#rgba(12, 12, 12, 0.48)',
 };
 
 export const fontSize = {
-	small: '12px',
+	small: '14px',
 	medium: '16px',
 	large: '20px',
+	xlarge: '24px',
 };
 
 export const fontWeight = {
