@@ -22,10 +22,10 @@ export const fontSize = {
 };
 
 export const fontWeight = {
-	thin: 300,
-	regular: 400,
-	medium: 500,
-	bold: 700,
+	thin: '300',
+	regular: '400',
+	medium: '500',
+	bold: '700',
 };
 
 const theme = {

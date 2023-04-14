@@ -17,12 +17,14 @@ export default function Root() {
 				headerStyle: { backgroundColor: brandColor.primary },
 				headerTintColor: 'white',
 				drawerActiveTintColor: brandColor.primary,
+				drawerType: 'front',
 			}}
+			initialRouteName="TextInput"
 		>
 			<Drawer.Screen name="Logo&Icon" component={LogoIconList} />
 			<Drawer.Screen name="Button" component={ButtonList} />
 			<Drawer.Screen name="Checkbox" component={CheckboxList} />
-			{/* <Drawer.Screen name="TextInput" component={TextInputList} /> */}
+			<Drawer.Screen name="TextInput" component={TextInputList} />
 		</Drawer.Navigator>
 	);
 }
