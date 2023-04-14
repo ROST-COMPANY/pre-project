@@ -5,6 +5,7 @@ import ButtonList from '../screens/ButtonList';
 import CheckboxList from '../screens/CheckboxList';
 import TextInputList from '../screens/TextInputList';
 import LogoIconList from '../screens/LogoIconList';
+import DropdownList from '../screens/DropdownList';
 
 const Drawer = createDrawerNavigator();
 
@@ -19,12 +20,13 @@ export default function Root() {
 				drawerActiveTintColor: brandColor.primary,
 				drawerType: 'front',
 			}}
-			initialRouteName="TextInput"
+			initialRouteName="Dropdown"
 		>
 			<Drawer.Screen name="Logo&Icon" component={LogoIconList} />
 			<Drawer.Screen name="Button" component={ButtonList} />
 			<Drawer.Screen name="Checkbox" component={CheckboxList} />
 			<Drawer.Screen name="TextInput" component={TextInputList} />
+			<Drawer.Screen name="Dropdown" component={DropdownList} />
 		</Drawer.Navigator>
 	);
 }

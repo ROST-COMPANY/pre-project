@@ -5,6 +5,8 @@ import { brandColor, fontSize, fontWeight } from '../styles/theme';
 import AccountIcon from '../assets/icon/AccountIcon';
 import LockIcon from '../assets/icon/LockIcon';
 import AlarmIcon from '../assets/icon/AlarmIcon';
+import UpIcon from '../assets/icon/UpIcon';
+import DownIcon from '../assets/icon/DownIcon';
 
 export default function LogoIconList() {
 	return (
@@ -37,6 +39,14 @@ export default function LogoIconList() {
 				<Column>
 					<AlarmIcon />
 					<Text>Alarm</Text>
+				</Column>
+				<Column>
+					<UpIcon />
+					<Text>Down</Text>
+				</Column>
+				<Column>
+					<DownIcon />
+					<Text>Up</Text>
 				</Column>
 			</Row>
 		</LogoIconListContainer>

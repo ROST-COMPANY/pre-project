@@ -65,7 +65,8 @@ const Container = styled.View<ContainerProps>`
 	align-items: center;
 	width: ${({ width }) => width};
 	height: ${({ height }) => height};
-	padding: 11px;
+	padding: 12px;
+	background-color: white;
 	border: 1px solid ${brandColor.primary};
 	border-radius: 8px;
 `;
