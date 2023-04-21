@@ -43,7 +43,7 @@ export default function Dropdown({
 
 	return (
 		<Container width={width}>
-			<Content width={width} isOpen={isOpen}>
+			<Content style={{ elevation: 3 }} width={width} isOpen={isOpen}>
 				<Touchable onPress={handlePressOpen}>
 					<Item>
 						<SelectedItemText isOpen={isOpen}>
@@ -88,6 +88,7 @@ const Container = styled.View<ContainerProps>`
 	position: relative;
 	width: ${({ width }) => width};
 	height: 52px;
+	background-color: white;
 	z-index: 3000;
 `;
 

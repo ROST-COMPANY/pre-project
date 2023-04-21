@@ -18,7 +18,7 @@ interface ButtonProps {
 	touchEffect?: TouchEffect;
 	width?: string;
 	height?: string;
-	onPress: PressHandler;
+	onPress: PressHandler | undefined;
 }
 
 export default function Button({
@@ -32,9 +32,11 @@ export default function Button({
 }: ButtonProps) {
 	if (disabled)
 		return (
-			<BGDisabled width={width} height={height}>
-				<TextDisabled>{children}</TextDisabled>
-			</BGDisabled>
+			<Container width={width} height={height}>
+				<BGDisabled>
+					<TextDisabled>{children}</TextDisabled>
+				</BGDisabled>
+			</Container>
 		);
 
 	const Inner = () => {
@@ -42,8 +44,6 @@ export default function Button({
 			case 'primary':
 				return (
 					<BGPrimary
-						width={width}
-						height={height}
 						colors={['#5257E1', '#764CD2', '#B63AB9']}
 						start={{ x: 0, y: 0 }}
 						end={{ x: 1, y: 0 }}
@@ -53,33 +53,31 @@ export default function Button({
 				);
 			case 'secondary':
 				return (
-					<BGSceondary width={width} height={height}>
+					<BGSceondary>
 						<TextSecondary>{children}</TextSecondary>
 					</BGSceondary>
 				);
 			case 'tertiary':
 				return (
-					<BGTertiary width={width} height={height}>
+					<BGTertiary>
 						<TextTertiary>{children}</TextTertiary>
 					</BGTertiary>
 				);
 			case 'danger':
 				return (
-					<BGDanger width={width} height={height}>
+					<BGDanger>
 						<TextDanger>{children}</TextDanger>
 					</BGDanger>
 				);
 			case 'ghost':
 				return (
-					<BGGhost width={width} height={height}>
+					<BGGhost>
 						<TextGhost>{children}</TextGhost>
 					</BGGhost>
 				);
 			default:
 				return (
 					<BGPrimary
-						width={width}
-						height={height}
 						colors={['#5257E1', '#764CD2', '#B63AB9']}
 						start={{ x: 0, y: 0 }}
 						end={{ x: 1, y: 0 }}
@@ -91,46 +89,41 @@ export default function Button({
 	};
 
 	return (
-		<>
+		<Container width={width} height={height}>
 			{touchEffect === 'opacity' && (
 				<Opacity onPress={onPress}>{Inner()}</Opacity>
 			)}
 			{touchEffect === 'none' && <None onPress={onPress}>{Inner()}</None>}
-		</>
+		</Container>
 	);
 }
 
-const Opacity = styled.TouchableOpacity`
-	width: 100%;
-`;
-
-const None = styled.TouchableWithoutFeedback`
-	width: 100%;
-`;
-
-interface BGProps {
+interface ContainerProps {
 	width: string;
 	height: string;
 }
 
-const BGCommon = styled.View<BGProps>`
-	justify-content: center;
-	align-items: center;
+const Container = styled.View<ContainerProps>`
 	width: ${({ width }) => width};
 	height: ${({ height }) => height};
+`;
+
+const Opacity = styled.TouchableOpacity``;
+
+const None = styled.TouchableWithoutFeedback``;
+
+const BGCommon = styled.View`
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 12px 20px;
 	border-radius: 8px;
 `;
 
-interface BGPrimaryProps {
-	width: string;
-	height: string;
-}
-
-const BGPrimary = styled(LinearGradient)<BGPrimaryProps>`
+const BGPrimary = styled(LinearGradient)`
 	justify-content: center;
 	align-items: center;
-	width: ${({ width }) => width};
-	height: ${({ height }) => height};
+	width: 100%;
 	padding: 12px 20px;
 	border-radius: 8px;
 `;
