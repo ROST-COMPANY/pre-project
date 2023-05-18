@@ -9,6 +9,7 @@ import DropdownList from '../screens/DropdownList';
 import SwitchList from '../screens/SwitchList';
 import TopTabList from '../screens/TopTabList';
 import ModalList from '../screens/ModalList';
+import AvatarList from '../screens/AvatarList';
 
 const Drawer = createDrawerNavigator();
 
@@ -23,7 +24,7 @@ export default function Root() {
 				drawerActiveTintColor: brandColor.primary,
 				drawerType: 'front',
 			}}
-			initialRouteName="modal"
+			initialRouteName="Avatar"
 		>
 			<Drawer.Screen name="Logo&Icon" component={LogoIconList} />
 			<Drawer.Screen name="Button" component={ButtonList} />
@@ -33,7 +34,8 @@ export default function Root() {
 			<Drawer.Screen name="Switch" component={SwitchList} />
 			<Drawer.Screen name="TobTab 2개" component={TopTabList} />
 			<Drawer.Screen name="TobTab 3개" component={TopTabList} />
-			<Drawer.Screen name="modal" component={ModalList} />
+			<Drawer.Screen name="Modal" component={ModalList} />
+			<Drawer.Screen name="Avatar" component={AvatarList} />
 		</Drawer.Navigator>
 	);
 }
